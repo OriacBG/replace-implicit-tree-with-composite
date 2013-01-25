@@ -10,11 +10,6 @@ public class OrdersWriter {
 
     public String getContents() {
       StringBuffer xml = new StringBuffer();
-      writeOrderTo(xml);
-      return xml.toString();
-    }
-
-    private void writeOrderTo(StringBuffer xml) {
       xml.append("<orders>");
       for (int i = 0; i < orders.getOrderCount(); i++) {
         Order order = orders.getOrder(i);
@@ -49,6 +44,7 @@ public class OrdersWriter {
         xml.append("</order>");
       }
       xml.append("</orders>");
+      return xml.toString();
     }
 
 
