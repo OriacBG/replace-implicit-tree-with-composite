@@ -11,6 +11,12 @@ public class Orders {
         return orders.size();
     }
 
+    public Orders add(Order order)
+    {
+        this.orders.add(order);
+        return this;
+    }
+
     public Order getOrder(int index) {
         return orders.get(index);
     }
