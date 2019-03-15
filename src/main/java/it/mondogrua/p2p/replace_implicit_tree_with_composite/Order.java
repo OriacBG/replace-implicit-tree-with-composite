@@ -27,4 +27,10 @@ public class Order {
         return products.get(index);
     }
 
+    public Order add(Product product)
+    {
+        this.products.add(product);
+        return this;
+    }
+
 }
