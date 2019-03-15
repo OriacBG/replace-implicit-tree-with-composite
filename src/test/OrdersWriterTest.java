@@ -14,6 +14,6 @@ public class OrdersWriterTest extends TestCase
 
         OrdersWriter ordersWriter = new OrdersWriter(orders);
         assertThat(ordersWriter.getContents(), instanceOf(String.class));
-        System.out.print(ordersWriter.getContents());
+        assertEquals(ordersWriter.getContents(), "<orders><order id='1'></order></orders>");
     }
 }
