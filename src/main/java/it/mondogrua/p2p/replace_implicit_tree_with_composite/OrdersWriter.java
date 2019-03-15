@@ -44,15 +44,19 @@ public class OrdersWriter {
                 xml.append("'");
             }
             xml.append(">");
-            xml.append("<price");
-            xml.append(" currency='");
-            xml.append(currencyFor(product));
-            xml.append("'>");
-            xml.append(product.getPrice());
-            xml.append("</price>");
+            writePriceTo(xml, product);
             xml.append(product.getName());
             xml.append("</product>");
         }
+    }
+
+    private void writePriceTo(StringBuffer xml, Product product) {
+        xml.append("<price");
+        xml.append(" currency='");
+        xml.append(currencyFor(product));
+        xml.append("'>");
+        xml.append(product.getPrice());
+        xml.append("</price>");
     }
 
 
