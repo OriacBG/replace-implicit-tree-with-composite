@@ -28,4 +28,20 @@ public class TagNodeTest extends TestCase {
                         "</product>";
         assertEquals("price XML", expected, productTag.toString());
     }
+
+    public void testAddingChildrenAndGrandchildren() {
+        String expected =
+                "<orders>" +
+                        "<order>" +
+                        "<product>" +
+                        "</product>" +
+                        "</order>" +
+                        "</orders>";
+        TagNode ordersTag = new TagNode("orders");
+        TagNode orderTag = new TagNode("order");
+        TagNode productTag = new TagNode("product");
+        ordersTag.add(orderTag);
+        orderTag.add(productTag);
+        assertEquals("price XML", expected, ordersTag.toString());
+    }
 }
