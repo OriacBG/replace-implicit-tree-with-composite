@@ -32,15 +32,14 @@ public class TagNode {
     public String toString() {
         String result;
         result =
-                "<" + name + attributes + ">" +
-                        value;
+                "<" + name + attributes + ">";
         Iterator it = children().iterator();
         while (it.hasNext()) {
             TagNode node = (TagNode) it.next();
             result += node.toString();
         }
+        result += value;
         result += "</" + name + ">";
-
 
         return result;
     }

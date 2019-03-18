@@ -19,6 +19,6 @@ public class OrdersWriterTest extends TestCase
 
         OrdersWriter ordersWriter = new OrdersWriter(orders);
         assertThat(ordersWriter.getContents(), instanceOf(String.class));
-        assertEquals(ordersWriter.getContents(), "<orders><order id='1'><product id='9999' color='cyan' size='medium'><price currency='CAD'>19.99</price>Nullable T-Shirt</product></order></orders>");
+        assertEquals("<orders><order id='1'><product id='9999' color='cyan' size='medium'><price currency='CAD'>19.99</price>Nullable T-Shirt</product></order></orders>", ordersWriter.getContents());
     }
 }

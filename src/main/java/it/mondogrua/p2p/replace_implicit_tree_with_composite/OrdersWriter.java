@@ -18,43 +18,34 @@ public class OrdersWriter {
         xml.append("<orders>");
         for (int i = 0; i < orders.getOrderCount(); i++) {
             Order order = orders.getOrder(i);
-            xml.append("<order");
-            xml.append(" id='");
-            xml.append(order.getOrderId());
-            xml.append("'>");
-            writeProductsTo(xml, order);
-            xml.append("</order>");
+            TagNode orderNode = new TagNode("order");
+            orderNode.addAttribute("id", order.getOrderId());
+            writeProductsTo(orderNode, order);
+            xml.append(orderNode.toString());
         }
         xml.append("</orders>");
     }
 
-    private void writeProductsTo(StringBuffer xml, Order order) {
+    private void writeProductsTo(TagNode orderNode, Order order) {
         for (int j = 0; j < order.getProductCount(); j++) {
             Product product = order.getProduct(j);
-            xml.append("<product");
-            xml.append(" id='");
-            xml.append(product.getID());
-            xml.append("'");
-            xml.append(" color='");
-            xml.append(colorFor(product));
-            xml.append("'");
+            TagNode productNode = new TagNode("product");
+            productNode.addAttribute("id", product.getID());
+            productNode.addAttribute("color", colorFor(product));
             if (product.getSize() != ProductSize.NOT_APPLICABLE) {
-                xml.append(" size='");
-                xml.append(sizeFor(product));
-                xml.append("'");
+                productNode.addAttribute("size", sizeFor(product));
             }
-            xml.append(">");
-            writePriceTo(xml, product);
-            xml.append(product.getName());
-            xml.append("</product>");
+            writePriceTo(productNode, product);
+            productNode.addValue(product.getName());
+            orderNode.add(productNode);
         }
     }
 
-    private void writePriceTo(StringBuffer xml, Product product) {
+    private void writePriceTo(TagNode productNode, Product product) {
         TagNode priceNode = new TagNode("price");
         priceNode.addAttribute("currency", currencyFor(product));
         priceNode.addValue(priceFor(product));
-        xml.append(priceNode.toString());
+        productNode.add(priceNode);
     }
 
     private String priceFor(Product product) {
