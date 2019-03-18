@@ -1,8 +1,6 @@
 import it.mondogrua.p2p.replace_implicit_tree_with_composite.*;
 import junit.framework.TestCase;
 
-import static org.junit.Assert.assertThat;
-
 
 public class TagNodeTest extends TestCase {
     private static final String SAMPLE_PRICE = "8.95";

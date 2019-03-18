@@ -4,7 +4,7 @@ public class Product {
 
     private final String id;
     private ProductSize size;
-    private double price;
+    private Double price;
     private String name;
     private String color;
     private String currency;
@@ -25,7 +25,7 @@ public class Product {
         this.size = size;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return this.price;
     }
 
