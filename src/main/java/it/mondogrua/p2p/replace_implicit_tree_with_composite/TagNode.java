@@ -1,10 +1,16 @@
 package it.mondogrua.p2p.replace_implicit_tree_with_composite;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class TagNode {
 
     private String name = "";
     private String value = "";
     private StringBuffer attributes;
+
+    private List children;
 
     public TagNode(String name) {
         this.name = name;
@@ -27,8 +33,26 @@ public class TagNode {
         String result;
         result =
                 "<" + name + attributes + ">" +
-                        value +
-                        "</" + name + ">";
+                        value;
+        Iterator it = children().iterator();
+        while (it.hasNext()) {
+            TagNode node = (TagNode) it.next();
+            result += node.toString();
+        }
+        result += "</" + name + ">";
+
+
         return result;
+    }
+
+    public void add(TagNode child) {
+        children().add(child);
+    }
+
+    private List children() {
+        if (children == null) {
+            children = new ArrayList();
+        }
+        return children;
     }
 }

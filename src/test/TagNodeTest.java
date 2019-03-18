@@ -18,5 +18,14 @@ public class TagNodeTest extends TestCase {
                         "</price>";
         assertEquals("price XML", expected, priceTag.toString());
     }
-
+    public void testCompositeTagOneChild() {
+        TagNode productTag = new TagNode("product");
+        productTag.add(new TagNode("price"));
+        String expected =
+                "<product>" +
+                        "<price>" +
+                        "</price>" +
+                        "</product>";
+        assertEquals("price XML", expected, productTag.toString());
+    }
 }
